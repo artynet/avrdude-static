@@ -55,7 +55,7 @@ fi
 
 if [ ! -f .libusb1_done ]
 then
-LD_LIBRARY_PATH=${BASE}/build/$OS/lib/ ../src/libusb-1.0.19/configure --prefix=${BASE}/build/$OS
+LD_LIBRARY_PATH=${BASE}/build/$OS/lib/ ../src/libusb-1.0.20/configure --prefix=${BASE}/build/$OS
 make -j4 && make install
 if [ $? == 0 ]; then
 touch .libusb1_done
@@ -98,7 +98,7 @@ touch .libftdi_done
 fi
 fi
 
-cd ../src/avrdude-6.1
+cd ../src/avrdude-6.2
 for p in ${BASE}/patches/*.patch; do echo Applying $p; patch -p1 < $p; done
 LD_LIBRARY_PATH=${BASE}/build/$OS/lib/ ./configure --prefix=${BASE}/build/$OS --enable-linuxgpio
 make
