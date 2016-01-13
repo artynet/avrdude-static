@@ -1,6 +1,9 @@
 function downloadAndUntar {
-  wget $1/$2
-  tar xvf $2
+    if [ ! -e $2 ]
+    then
+        wget $1/$2
+    fi
+    tar xvf $2
 }
 
 GLIBC_VERSION=`ldd --version | head -n1 | awk '{print $NF}'`
@@ -15,7 +18,7 @@ downloadAndUntar http://downloads.sourceforge.net/project/libusb/libusb-1.0/libu
 downloadAndUntar http://downloads.sourceforge.net/project/libusb/libusb-compat-0.1/libusb-compat-0.1.4 libusb-compat-0.1.4.tar.bz2
 downloadAndUntar ftp://ftp.gnu.org/gnu/ncurses ncurses-6.0.tar.gz
 downloadAndUntar ftp://ftp.cwru.edu/pub/bash readline-6.3.tar.gz
-downloadAndUntar http://www.mr511.de/software libelf-0.8.9.tar.gz
+downloadAndUntar http://www.mr511.de/software libelf-0.8.13.tar.gz
 downloadAndUntar http://mirror2.mirror.garr.it/mirrors/gnuftp/gnu/libc glibc-${GLIBC_VERSION}.tar.bz2
 git clone https://github.com/gentoo/eudev.git
 
