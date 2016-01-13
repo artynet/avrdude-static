@@ -1,0 +1,11 @@
+--- a/bitbang.c	2014-03-13 00:03:19.000000000 +0100
++++ b/bitbang.c	2015-10-19 11:13:20.000000000 +0200
+@@ -339,7 +339,7 @@
+     res[i] = bitbang_txrx(pgm, cmd[i]);
+   }
+ 
+-    if(verbose >= 2)
++    if(verbose > 4)
+ 	{
+         fprintf(stderr, "bitbang_cmd(): [ ");
+         for(i = 0; i < 4; i++)
